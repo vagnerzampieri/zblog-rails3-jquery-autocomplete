@@ -1,0 +1,13 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :title, :hint => "Não pode ser nulo" %>
+  <div class="input string required">
+    <label class="string required" for="post_author">Auhtor</label>
+    <%= f.autocomplete_field :author_name, autocomplete_author_name_posts_path %>
+  </div>
+  <%= f.input :body, :placeholder => "Não pode ser nulo" %>
+  <%=f.input :publication, :start_year => Date.today.year,
+                           :end_year => Date.today.year - 12,
+                           :order => [:month, :year, :day] %>
+  <%= f.button :submit %>
+<% end %>
